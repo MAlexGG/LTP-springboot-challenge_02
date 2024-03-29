@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 @Controller
 public class StoreController {
 
-    List<Store> products = new ArrayList<>(); 
+    List<Item> products = new ArrayList<>(); 
     
     @GetMapping("/")
     public String getForm(Model model) {
@@ -27,8 +27,8 @@ public class StoreController {
     }
 
     @PostMapping("/inventory")
-    public String submitForm(Store store) {
-        products.add(store);
+    public String submitForm(Item item) {
+        products.add(item);
         return "redirect:/inventory";
     }
     
