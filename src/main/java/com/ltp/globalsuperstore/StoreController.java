@@ -12,25 +12,28 @@ import org.springframework.web.bind.annotation.PostMapping;
 @Controller
 public class StoreController {
 
-    List<Item> products = new ArrayList<>(); 
+    private List<Item> items = new ArrayList<>(); 
     
     @GetMapping("/")
     public String getForm(Model model) {
+        model.addAttribute("item", new Item());
         model.addAttribute("categories", Constants.CATEGORIES);
         return "form";
     }
     
+    @PostMapping("/submitItem")
+    public String handleSubmit(Item item) {
+        items.add(item);
+        return "redirect:/inventory";
+    }
+
     @GetMapping("/inventory")
     public String getInventory(Model model) {
-        model.addAttribute("products", products);
+        model.addAttribute("items", items);
         return "inventory";
     }
 
-    @PostMapping("/inventory")
-    public String submitForm(Item item) {
-        products.add(item);
-        return "redirect:/inventory";
-    }
+    
     
     
 

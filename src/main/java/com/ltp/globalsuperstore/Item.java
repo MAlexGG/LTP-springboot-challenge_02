@@ -2,13 +2,26 @@ package com.ltp.globalsuperstore;
 
 import java.util.Date;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
+
 public class Item {
 
     private String category;
     private String name;
     private Double price;
     private Double discount;
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date date;
+
+
+    public Item(String category, String name, Double price, Double discount, Date date) {
+        this.category = category;
+        this.name = name;
+        this.price = price;
+        this.discount = discount;
+        this.date = date;
+    }
 
 
     public Item() {
@@ -54,6 +67,5 @@ public class Item {
     public void setDate(Date date) {
         this.date = date;
     }
-
 
 }

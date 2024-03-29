@@ -11,16 +11,16 @@
     </div>
     <div class="container">
         <h2> Global Superstore </h2>
-        <form method="post" th:action="@{/submitForm}">
-            <select class="select" name="categories">
+        <form method="post" th:action="@{/submitItem}" th:object="${item}">
+            <select class="select" th:field="*{category}">
                 <option style="color:blue" value="">Choose Category</option>
                 <option th:each="category: ${categories}" th:text="${category}" th:value="${category}"></option>
             </select>
-            <input type="text" placeholder="Name" name="name">
-            <input class="half" type="text" placeholder="Price" name="price">
-            <input class="half" type="text" placeholder="Discount" name="discount">
+            <input type="text" placeholder="Name" th:field="*{name}">
+            <input class="half" type="text" placeholder="Price" th:field="*{price}">
+            <input class="half" type="text" placeholder="Discount" th:field="*{discount}">
             <h4>Order Date</h4>
-            <input type="date" style="color:black" name="orderDate">
+            <input type="date" style="color:black" th:field="*{date}">
             <input type="submit" value="Submit Item">
         </form>
     </div>
