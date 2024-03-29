@@ -11,6 +11,11 @@
     </div>
 
     <div class="container">
+
+        <div class="alert success" th:if="${status == 'success'} ">
+            <strong> You successfully submited the item! </strong>
+        </div>
+
         <table>
             <tr class="head">
                 <th>Category</th>

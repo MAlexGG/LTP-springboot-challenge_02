@@ -8,6 +8,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 
 @Controller
@@ -24,15 +25,14 @@ public class StoreController {
     }
     
     @PostMapping("/submitItem")
-    public String handleSubmit(Item item) {
+    public String handleSubmit(Item item, RedirectAttributes redirectAttributes) {
         int index = getIndexFromId(item.getId());
         if(index == Constants.NOT_FOUND){
             items.add(item);
         } else {
             items.set(index, item);
         }
-
-         
+        redirectAttributes.addFlashAttribute("status", Constants.SUCCESS_STATUS);
         return "redirect:/inventory";
     }
 
